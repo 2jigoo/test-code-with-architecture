@@ -4,7 +4,7 @@ import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.post.domain.PostCreate;
 import com.example.demo.post.domain.PostUpdate;
 import com.example.demo.post.infrastructure.PostEntity;
-import com.example.demo.post.infrastructure.PostRepository;
+import com.example.demo.post.service.port.PostRepository;
 import com.example.demo.user.infrastructure.UserEntity;
 import java.time.Clock;
 
@@ -17,7 +17,9 @@ import org.springframework.stereotype.Service;
 public class PostService {
 
     private final PostRepository postRepository;
+
     private final UserService userService;
+
 
     public PostEntity getById(long id) {
         return postRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Posts", id));
